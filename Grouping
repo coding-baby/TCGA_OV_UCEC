@@ -1,0 +1,9 @@
+setwd("~/Documents/Lunit/On going projects/Playground")
+library(readxl)
+
+TCGA_LunitScopeIO4_OV_UCEC_results_Peter <- read_excel("~/Documents/Lunit/On going projects/Playground/TCGA_LunitScopeIO4_OV_UCEC_results_Peter.xlsx", sheet = "Sheet2")
+db <-TCGA_LunitScopeIO4_OV_UCEC_results_Peter
+
+library(dplyr)
+
+db$group <- ifelse (db$C_I_den < 1.828416e-03, "Immune-desert", ifelse(db$CE_l_den < 1.303821e-03, "Immune-excluded", "Inflamed"))
